@@ -1,0 +1,29 @@
+pipeline {
+    agent any
+    stages {
+        stage('Setup') {
+            steps {
+                // Optionally: checkout this deployment repo or just pull updates to docs
+            }
+        }
+        stage('Provision & Deploy') {
+            steps {
+                // Run ansible against your VMs
+                ansiblePlaybook(
+                    playbook: 'ansible/site.yml',
+                    inventory: 'ansible/inventory',
+                    credentialsId: 'vm-ssh-key-or-credentials'
+                )
+            }
+        }
+    }
+}
+    post {
+        success {
+            echo 'Deployment completed successfully.'
+        }
+        failure {
+            echo 'Deployment failed. Please check the logs.'
+        }
+    }
+}
