@@ -5,6 +5,7 @@
 - Uses Jenkins to automate the flow
 - Uses Ansible to set up both Web and DB environments end-to-end
 
+
 ## Folder Structure
 See above. Petclinic source lives in `spring-petclinic/`.
 
@@ -15,4 +16,14 @@ See above. Petclinic source lives in `spring-petclinic/`.
 4. **Set up Jenkins** with SSH credentials and Ansible plugin
 5. **Run Jenkins pipeline** (copies app, provisions VMs, starts app)
 6. **Result:** Petclinic app running at `http://YOUR_WEB_VM_IP:8080/`
+
+Run Petclinic locally
+
+Spring Petclinic is a Spring Boot application built using Maven or Gradle. Java 25 or later is required for the build, but the application can run with Java 17 or newer:
+
+git clone https://github.com/spring-projects/spring-petclinic.git
+cd spring-petclinic
+./mvnw package
+java -jar target/*.jar
+
 
